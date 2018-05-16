@@ -1,0 +1,33 @@
+<div class="row justify-content-center mt-2">
+  <div class="col-md-10">
+    <div class="form-group text-center">
+      <label class="" for="add-todo">Add Todo</label>
+      <input (keyup.enter)="addTodo(todoText)" type="text" class="form-control" id="add-todo" placeholder="add todo" #todoText>
+    </div>
+    <div class="form-group text-center">
+      <input (click)= "addTodo(todoText)" type="button " class="form-control btn btn-primary" value="Submit">
+    </div>
+
+  </div>
+</div>
+<div class="row justify-content-center mt-2">
+  <div class="col-md-10">
+    <ul class="list-group">
+      <li *ngFor="let todo of todos" class="list-group-item mt-2">
+        <div class="d-flex justify-content-between align-items-center">
+          <input type="checkbox" value="" [checked] = "todo.isCompleted" (click) = "updateStatus(todo)">
+          <span *ngIf="!todo.isEditState"> {{todo.text}}</span>
+          <div class="d-flex align-items-center" *ngIf="todo.isEditState">
+            <input type="text" value="{{todo.text}}" #editText>
+            <button (click) ="updateTodoText( todo, editText)" class="btn btn-primary">save</button>
+            <button (click) = "updateEditState(todo)" class="btn">cancle</button>
+          </div>
+          <div class="btn-wrapper">
+            <button  [disabled] = "todo.isEditState"(click)="updateEditState(todo)" class="btn">Edit</button>
+            <button (click) = "deleteTodo(todo._id)"  class="btn btn-danger">Delete</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

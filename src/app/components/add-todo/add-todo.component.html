@@ -1,0 +1,12 @@
+<div class="row justify-content-center mt-2">
+  <div class="col-md-10">
+    <div class="form-group text-center">
+      <label class="" for="add-todo">Add Todo</label>
+      <input (keyup.enter)="addTodo(todoText)" type="text" class="form-control" id="add-todo" placeholder="add todo" #todoText>
+    </div>
+    <div class="form-group text-center">
+      <input (click)= "addTodo(todoText)" type="button " class="form-control btn btn-primary" value="Submit">
+    </div>
+
+  </div>
+  </div>
